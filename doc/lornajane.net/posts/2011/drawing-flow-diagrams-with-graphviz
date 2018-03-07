@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="bitly-verification" content="ff69fb2e45ef"/>
+<title>Drawing Flow Diagrams with GraphViz | LornaJane</title>
+<link rel="shortcut icon" href="https://lornajane.net/wp-content/themes/lornajane_2011/images/favicon.ico">
+<link rel="apple-touch-icon" href="https://lornajane.net/wp-content/themes/lornajane_2011/images/favicon129.png" />
+<link rel="profile" href="https://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="https://lornajane.net/wp-content/themes/lornajane_2011/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="https://lornajane.net/wp-content/themes/lornajane_2011/pygments.css" />
+<link rel="pingback" href="https://lornajane.net/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://lornajane.net/wp-content/themes/lornajane_2011/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="LornaJane &raquo; Feed" href="https://lornajane.net/feed" />
+<link rel="alternate" type="application/rss+xml" title="LornaJane &raquo; Comments Feed" href="https://lornajane.net/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="LornaJane &raquo; Drawing Flow Diagrams with GraphViz Comments Feed" href="https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz/feed" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.2.8 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+		var disableStr = 'ga-disable-UA-365073-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-365073-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/lornajane.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='https://lornajane.net/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0' type='text/css' media='all' />
+<link rel='stylesheet' id='related-frontend-css-css'  href='https://lornajane.net/wp-content/plugins/related/css/frontend-style.css?ver=3.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://lornajane.net/wp-content/plugins/jetpack/css/jetpack.css?ver=5.8' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"https:\/\/lornajane.net","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://lornajane.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=6.2.8'></script>
+<script type='text/javascript' src='https://lornajane.net/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://lornajane.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='https://lornajane.net/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lornajane.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://lornajane.net/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Comment, Don&#039;t Tweet' href='https://lornajane.net/posts/2011/comment-dont-tweet' />
+<link rel='next' title='New Site Theme' href='https://lornajane.net/posts/2011/new-site-theme' />
+<meta name="generator" content="WordPress 4.9.4" />
+<link rel="canonical" href="https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz" />
+<link rel='shortlink' href='https://lornajane.net/?p=891' />
+<link rel="alternate" type="application/json+oembed" href="https://lornajane.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flornajane.net%2Fposts%2F2011%2Fdrawing-flow-diagrams-with-graphviz" />
+<link rel="alternate" type="text/xml+oembed" href="https://lornajane.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flornajane.net%2Fposts%2F2011%2Fdrawing-flow-diagrams-with-graphviz&#038;format=xml" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Drawing Flow Diagrams with GraphViz" />
+<meta property="og:url" content="https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz" />
+<meta property="og:description" content="Recently I&#8217;ve been drawing a few different kinds of diagrams for a book I was writing, and been using graphviz to create them. Since I struggled a bit to get them going the way that I wanted …" />
+<meta property="article:published_time" content="2011-08-17T15:02:08+00:00" />
+<meta property="article:modified_time" content="2011-08-17T15:02:08+00:00" />
+<meta property="og:site_name" content="LornaJane" />
+<meta property="og:image" content="/uploads/tech/visibility.png" />
+<meta property="og:image:width" content="567" />
+<meta property="og:image:height" content="443" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Drawing Flow Diagrams with GraphViz" />
+<meta name="twitter:card" content="summary" />
+<!--[if lte IE 7]>
+<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.0.3.css" media="screen, projection">
+<![endif]-->
+</head>
+
+<body class="post-template-default single single-post postid-891 single-format-standard single-author singular one-column content">
+<!--[if lte IE 7]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div> <![endif]-->
+<div class="wrapper"><nav id="access" role="navigation">
+	<h3 class="assistive-text">Main menu</h3>
+		<div class="skip-link"><a class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+	<div class="skip-link"><a class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+		<div class="menu-primary-nav-container"><ul id="menu-primary-nav" class="menu"><li id="menu-item-727" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-727"><a href="https://lornajane.net/">Home</a></li>
+<li id="menu-item-772" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-772"><a href="https://lornajane.net/blog">Blog</a></li>
+<li id="menu-item-1211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1211"><a href="https://lornajane.net/publications">Publications</a></li>
+<li id="menu-item-730" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-730"><a href="https://lornajane.net/resources">More LornaJane</a></li>
+<li id="menu-item-1473" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1473"><a href="https://lornajane.net/testimonials">Testimonials</a></li>
+<li id="menu-item-897" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-897"><a href="https://lornajane.net/about">About</a></li>
+<li id="menu-item-729" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-729"><a href="https://lornajane.net/contact">Contact</a></li>
+</ul></div>				<form method="get" id="searchform" action="https://lornajane.net/">
+		<label for="s" class="assistive-text">Search</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Search" />
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Search" />
+	</form>
+	</nav><!-- #access -->
+</div>
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+		<hgroup>
+			<h1 id="site-title">
+								<span>
+					<a href="https://lornajane.net/" title="LornaJane" rel="home">LornaJane</a>
+				</span> 
+				<a href="https://lornajane.net/blog">Blog</a><a href="https://lornajane.net/" title="LornaJane" rel="home"><img src="https://lornajane.net/wp-content/themes/lornajane_2011/images/small.png" width="66" height="66" alt="Lorna Jane Avartar Thumbnail" title="Lorna Jane"/></a> 
+			</h1>
+		</hgroup>
+	</header><!-- #branding -->
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					
+
+					
+<article id="post-891" class="post-891 post type-post status-publish format-standard hentry category-1-tech tag-book tag-graphviz tag-prophp tag-1-tech">
+			<div class="postdate">
+			<div class="month m-08">17 Aug</div>
+			<!--<div class="day d-"><?php// the_time('d') ?></div>-->
+			<div class="year y-2011">2011</div>
+					</div>
+		<div class="postwrapper">
+		<div class="entry-content">
+			<header class="entry-header">
+				<h1 class="entry-title"> Drawing Flow Diagrams with GraphViz</h1>
+							</header>		
+			<p>Recently I've been drawing a few different kinds of diagrams for a book I was writing, and been using graphviz to create them.  Since I struggled a bit to get them going the way that I wanted them to, I am sharing them here (as much for my future self as anyone else visiting, but if they help you too then that's excellent).<br />
+<span id="more-891"></span>The diagram itself looks like this - it's a simplified representation of choosing an access modifier in PHP:</p>
+<p><a class="serendipity_image_link"  href='/uploads/tech/visibility.png'><!-- s9ymdb:404 --><img class="serendipity_image_center" width="567" height="443"  src="/uploads/tech/visibility.png"  alt="" /></a></p>
+<p>It's generated using the following code:</p>
+<p><code><br />
+digraph {<br />
+  start [label="Start"];</p>
+<p>  start -> decision;</p>
+<p>  decision [shape=diamond, label="Accessed externally?"];</p>
+<p>  decision -> public [label="Yes"];<br />
+  decision -> notpublic [label="No"];</p>
+<p>  public [shape=box, label="public"];<br />
+  notpublic [shape=diamond, label="Deny to children?"];</p>
+<p>  notpublic -> protected [label="No"]<br />
+  notpublic -> private [label="Yes"]</p>
+<p>  protected [shape=box, label="protected"]<br />
+  private [shape=box, label="private"]</p>
+<p>  { rank=same; decision; public }<br />
+  { rank=same; notpublic; private }</p>
+<p>}<br />
+</code></p>
+<p>I used a few different shapes to create the elements shown, and this is a directed graph.  To show the decisions, I used labels on edges.  And to line everything up as shown here, I used the rank=same settings, to put pairs of elements at the same level, even though graphviz would have started at the top and then added downwards arrows for each element.</p>
+					<div class="clear"></div></div><!-- .entry-content -->
+	</div>
+		<footer class="entry-meta">
+			This entry was posted in <a href="https://lornajane.net/posts/category/1-tech" rel="category tag">tech</a> and tagged <a href="https://lornajane.net/posts/tag/book" rel="tag">book</a>, <a href="https://lornajane.net/posts/tag/graphviz" rel="tag">graphviz</a>, <a href="https://lornajane.net/posts/tag/prophp" rel="tag">prophp</a>, <a href="https://lornajane.net/posts/tag/1-tech" rel="tag">tech</a> by <a href="https://lornajane.net/posts/author/lornajane">lornajane</a>. Bookmark the <a href="https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz" title="Permalink to Drawing Flow Diagrams with GraphViz" rel="bookmark">permalink</a>.			
+
+					</footer><!-- .entry-meta -->
+
+</article><!-- #post-891 -->
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="https://lornajane.net/posts/2011/comment-dont-tweet" rel="prev"><span class="meta-nav">&larr;</span> Previous</a></span>
+						<span class="nav-next"><a href="https://lornajane.net/posts/2011/new-site-theme" rel="next">Next <span class="meta-nav">&rarr;</span></a></span>
+					</nav><!-- #nav-single -->
+						<div id="comments">
+	
+	
+			<h2 id="comments-title">
+			2 thoughts on &ldquo;<span>Drawing Flow Diagrams with GraphViz</span>&rdquo;		</h2>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-10623">
+		<article id="comment-10623" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt='' src='https://secure.gravatar.com/avatar/8189ac473b1820174eb95455d4dc023a?s=68&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/8189ac473b1820174eb95455d4dc023a?s=136&#038;d=blank&#038;r=g 2x' class='avatar avatar-68 photo' height='68' width='68' /><span class="fn"><a href='http://www.noenieto.com' rel='external nofollow' class='url'>Noe Nieto</a></span> on <a href="https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz#comment-10623"><time pubdate datetime="2013-02-17T03:50:44+00:00">February 17, 2013 at 03:50</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Thanks. This helped me to start my own flow diagrams with graphviz.</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz?replytocom=10623#respond' onclick='return addComment.moveForm( "comment-10623", "10623", "respond", "891" )' aria-label='Reply to Noe Nieto'>Reply <span>&darr;</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-15163">
+		<article id="comment-15163" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt='' src='https://secure.gravatar.com/avatar/abc66ea88dfdf7ab4b52f1d41a7727fd?s=68&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/abc66ea88dfdf7ab4b52f1d41a7727fd?s=136&#038;d=blank&#038;r=g 2x' class='avatar avatar-68 photo' height='68' width='68' /><span class="fn">Matt Pettis</span> on <a href="https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz#comment-15163"><time pubdate datetime="2013-12-19T19:37:53+00:00">December 19, 2013 at 19:37</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Very nice.  Did you ever expand this example to have decisions that have to make arrows go back up to previous steps, as a possible loop?  I'm looking to do similar things to what you have here, but I have elements that make you possibly redo steps...</p>
+</div>
+
+			<div class="reply">
+				<a rel='nofollow' class='comment-reply-link' href='https://lornajane.net/posts/2011/drawing-flow-diagrams-with-graphviz?replytocom=15163#respond' onclick='return addComment.moveForm( "comment-15163", "15163", "respond", "891" )' aria-label='Reply to Matt Pettis'>Reply <span>&darr;</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/posts/2011/drawing-flow-diagrams-with-graphviz#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://lornajane.net/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				Please use [code] and [/code] around any source code you wish to share. <p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required='true' required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required='true' required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='891' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7fd39b98e9" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="96"/></p>			</form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+</div><!-- #page -->
+<footer id="colophon" role="contentinfo">
+
+	
+<div id="supplementary" class="two">
+		<div id="first" class="widget-area" role="complementary">
+		<aside id="text-5" class="widget widget_text"><h3 class="widget-title">Contact</h3>			<div class="textwidget"><ul><li>Email: <a href="/cdn-cgi/l/email-protection#177f7e577b786579767d76797239797263"><span class="__cf_email__" data-cfemail="ea8283aa868598848b808b848fc4848f9e">[email&#160;protected]</span></a></li>
+
+<li>Twitter: <a href="https://www.twitter.com/lornajane">@lornajane</a></li>
+
+<li>Phone: +44 113 830 1739 </li>
+</ul></div>
+		</aside><aside id="linkcat-209" class="widget widget_links"><h3 class="widget-title">Links</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://gophp7.org/gophp7-ext">Go PHP7 (ext)</a></li>
+<li><a href="http://m.joind.in/about" title="Open Source Event Feedback Tool" target="_blank">Joind.In</a></li>
+<li><a href="http://www.lornajane.net/zce-links-collection">ZCE Links Bundle</a></li>
+<li><a href="http://www.lornajane.net/project/zend-certification-questions-pack">ZCE Questions Pack</a></li>
+
+	</ul>
+</aside>
+	</div><!-- #first .widget-area -->
+	
+	
+		<div id="third" class="widget-area" role="complementary">
+		<aside id="text-6" class="widget widget_text"><h3 class="widget-title">Books and Videos</h3>			<div class="textwidget"><a href="http://www.tkqlhce.com/click-7049572-11260198-1448292209000?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F0636920042860.do%3Fcmp%3Daf-webplatform-books-videos-product_cj_9781491933091_%2525zp&cjsku=0636920042860" target="_top"><img src="https://akamaicovers.oreilly.com/images/0636920042860/cat.gif" height="220" border="0" alt="PHP Web Services"/></a><img src="https://www.awltovhc.com/image-7049572-11260198-1448292209000" width="1" height="1" border="0"/>
+
+<a href="https://leanpub.com/gitworkbook"><img src="/wp-content/uploads/2014/10/title_page.jpg" height="220" alt="Git Workbook"/></a>
+
+<a href="http://www.dpbolvw.net/click-7049572-12282622-1437063682000" target="_top"><img src="/wp-content/uploads/2015/07/git-fundamentals-screencast-195x300.jpg" height="220" alt="git fundamentals course" /></a><img src="https://www.tqlkg.com/image-7049572-12282622-1437063682000" width="1" height="1" border="0"/>
+
+<a href="http://www.jdoqocy.com/click-7049572-11260198?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F110000646.do%3Fcmp%3Daf-prog-books-videos-product_cj_9781491908020_%2525zp&#038;cjsku=110000646" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.jdoqocy.com/click-7049572-11260198?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F110000646.do%3Fcmp%3Daf-prog-books-videos-product_cj_9781491908020_%2525zp&amp;cjsku=110000646', '']);"   target="_top"><img src="https://akamaicovers.oreilly.com/images/110000646/cat.gif" border="0" alt="Intermediate PHP" height="220"/></a><img src="https://www.tqlkg.com/image-7049572-11260198" width="1" height="1" border="0"/>
+
+
+<a href="https://leanpub.com/nways" target="_blank"><img src="/wp-content/uploads/2013/12/title_page-212x300.png" alt="nways" height="220" /></a>
+
+<a href="http://www.tkqlhce.com/click-7049572-11260198?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F110000648.do%3Fcmp%3Daf-prog-books-videos-product_cj_9781491909980_%2525zp&#038;cjsku=110000648" onclick="_gaq.push(['_trackEvent', 'outbound-article', 'http://www.tkqlhce.com/click-7049572-11260198?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F110000648.do%3Fcmp%3Daf-prog-books-videos-product_cj_9781491909980_%2525zp&amp;cjsku=110000648', '']);"   target="_top"><img src="https://akamaicovers.oreilly.com/images/110000648/cat.gif" border="0" alt="PHP Web Services" height="220"/></a><img src="https://www.tqlkg.com/image-7049572-11260198" width="1" height="1" border="0"/>
+
+<a href="http://www.kqzyfj.com/click-7049572-11260198?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F9780987090874.do%3Fcmp%3Daf-npa-book-product_cj_9780987090874_%25zp&cjsku=9780987090874" target="_blank" onmouseover="window.status='http://oreilly.com';return true;" onmouseout="window.status=' ';return true;"><img src="https://akamaicovers.oreilly.com/images/9780987090874/cat.gif" border="0" alt="PHP Master" height="220"/></a><img src="https://www.lduhtrp.net/image-7049572-11260198" width="1" height="1" border="0"/>
+
+<a href="https://leanpub.com/zce"><img src="/wp-content/uploads/2013/01/title_page.png" height="220" alt="Zend Preparation Pack" /></a>
+
+</div>
+		</aside>	</div><!-- #third .widget-area -->
+	</div><!-- #supplementary -->
+
+</footer><!-- #colophon -->
+<div id="footer-sitecopy">
+	<div>
+		<p><span class="copy">&copy; 2006-2018 LornaJane.net</span>
+		Icons courtesy of <a href="http://thenounproject.com/" title="The Noun Project">The Noun Project</a> </p>
+        <br />
+	</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/d07b1474/cloudflare-static/email-decode.min.js"></script><script type='text/javascript' src='https://lornajane.net/wp-includes/js/comment-reply.min.js?ver=4.9.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/lornajane.net\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://lornajane.net/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201806'></script>
+<script type='text/javascript' src='https://lornajane.net/wp-includes/js/wp-embed.min.js?ver=4.9.4'></script>
+<script async="async" type='text/javascript' src='https://lornajane.net/wp-content/plugins/akismet/_inc/form.js?ver=4.0.2'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201806.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:5.8',blog:'113654689',post:'891',tz:'0',srv:'lornajane.net'} ]);
+	_stq.push([ 'clickTrackerInit', '113654689', '891' ]);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+digraph {
+	rankdir = BT;
+	
+	start [label="Go to Food Pantry:\n1621 McCormick Dr, Flint, MI 48532"];
+
+	start -> foodPantry;
+
+	foodPantry [shape=diamond, label="Able to get food?"];
+
+	foodPantry -> cellPhone [label="Yes"];
+	foodPantry -> updateFoodPantryHours [label="No"];
+
+	cellPhone [shape=box, label="Go to Locust Wireless:\n1823 McCormick Dr, Flint, MI 48532"];
+	updateFoodPantryHours [shape=box, label="Please Update food pantry hours on form here:"];	
+	updateFoodPantryHours -> soupKitchen;
+	soupKitchen [shape=box, label="Go to Soup Kitchen:\n443 Beecher Rd, Flint, MI 48503"];
+
+	ableToGetMeal [shape=diamond, label="Able to get warm meal?"];
+
+	soupKitchen -> ableToGetMeal;
+	ableToGetMeal -> cellPhone [label="Yes"]
+	
+	cellPhone -> ableToGetCellPhone;
+
+	ableToGetCellPhone [shape=diamond, label="Able to get free cell phone?"];
+	
+	ableToGetCellPhone -> callFLP [label="Yes"];
+
+	callFLP [shape=box, label="Call the Free Life Planner 1-800-GET-HELP"];
+	
+	
+	goToMeijer [shape=box, label="Go to Meijer:\n2333 N. Holland, Flint, MI 45519"];
+	
+	ableToGetMeal -> goToMeijer [label="No"];
+	
+
+	// { rank=same; decision; public }
+	// { rank=same; notpublic; private }
+
+}
